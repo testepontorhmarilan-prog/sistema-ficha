@@ -231,5 +231,3 @@ def gerar_pdf(cpf):
     doc.build(conteudo)
 
     return send_file(caminho, as_attachment=True)
-
-app.run(debug=True)
