@@ -101,7 +101,65 @@ def salvar():
         conn.commit()
         conn.close()
 
-        return "Cadastro realizado com sucesso!"
+        ```python id="n7l3cx"
+return """
+<html>
+
+<head>
+
+<style>
+
+body{
+    font-family:Segoe UI;
+    background:#eef2f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.box{
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.ok{
+    color:#16a34a;
+    font-size:22px;
+    font-weight:bold;
+}
+
+p{
+    color:#64748b;
+}
+
+</style>
+
+<meta http-equiv="refresh" content="2;url=/">
+
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="ok">
+✅ Cadastro realizado com sucesso!
+</div>
+
+<p>
+Redirecionando...
+</p>
+
+</div>
+
+</body>
+
+</html>
+"""
 
     except sqlite3.IntegrityError:
         return "CPF já cadastrado!"
