@@ -1,0 +1,24 @@
+<h2>Painel RH</h2>
+<p>Total de candidatos: {{total}}</p>
+
+<a href="/exportar">📥 Exportar Excel</a>
+
+<table border="1">
+<tr>
+<th>Nome</th>
+<th>CPF</th>
+<th>Cargo</th>
+<th>Score</th>
+<th>PDF</th>
+</tr>
+
+{% for c in dados %}
+<tr>
+<td>{{c.nome}}</td>
+<td>{{c.cpf}}</td>
+<td>{{c.cargo}}</td>
+<td>{{c.score}}</td>
+<td><a href="/pdf/{{c.cpf}}">Gerar PDF</a></td>
+</tr>
+{% endfor %}
+</table>

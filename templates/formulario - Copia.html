@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Sistema RH</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #eef2f7;
+}
+
+/* TOPO */
+.topbar {
+    background: #0f2a44;
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar .right span {
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 230px;
+    height: calc(100vh - 60px);
+    background: #f8fafc;
+    position: fixed;
+    top: 60px;
+    border-right: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px 20px;
+    color: #334155;
+    text-decoration: none;
+}
+
+.sidebar a.active {
+    background: #e0ecff;
+    color: #2563eb;
+    font-weight: bold;
+}
+
+/* CONTEÚDO */
+.content {
+    margin-left: 230px;
+    padding: 30px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+/* TÍTULO */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.header i {
+    font-size: 30px;
+    color: #2563eb;
+}
+
+/* SEÇÕES */
+.section-title {
+    color: #2563eb;
+    font-weight: bold;
+    margin: 20px 0 10px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.full {
+    grid-column: span 3;
+}
+
+/* INPUT */
+input, select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+}
+
+/* ALERTA */
+.alert {
+    background: #eef4ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #1e3a8a;
+}
+
+/* BOTÃO */
+.btn {
+    margin-top: 20px;
+    float: right;
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 15px;
+    background: #0f2a44;
+    color: white;
+    margin-top: 30px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- TOPO -->
+<div class="topbar">
+    <strong><i class="fas fa-users"></i> Sistema RH</strong>
+
+    <div class="right">
+        <span><i class="fas fa-question-circle"></i> Ajuda</span>
+        <span><i class="fas fa-shield-alt"></i> Privacidade</span>
+        <span>17/05/2026 23:50</span>
+    </div>
+</div>
+
+<!-- MENU -->
+<div class="sidebar">
+    <a class="active"><i class="fas fa-file"></i> Ficha de Emprego</a>
+    <a><i class="fas fa-building"></i> Sobre a Empresa</a>
+</div>
+
+<!-- CONTEÚDO -->
+<div class="content">
+    <div class="card">
+
+        <div class="header">
+            <i class="fas fa-briefcase"></i>
+            <div>
+                <h2>Ficha de Emprego</h2>
+                <p>Preencha todos os campos abaixo com atenção.</p>
+            </div>
+        </div>
+
+        <!-- DADOS -->
+        <div class="section-title">Dados Pessoais</div>
+
+        <div class="grid">
+            <input class="full" placeholder="Nome completo" name="nome">
+
+<input type="date" name="data_nascimento">
+
+<input placeholder="CPF" id="cpf" name="cpf">
+<input placeholder="RG" name="rg">
+<input placeholder="Telefone" name="telefone">
+<input placeholder="Nome da mãe" name="nome_mae">
+<input placeholder="Nome do pai" name="nome_pai">
+<input placeholder="Cidade" name="cidade">
+        </div>
+
+        <!-- PROFISSIONAL -->
+        <div class="section-title">Dados Profissionais</div>
+
+        <div class="grid">
+            <select>
+                <option>Selecione o cargo</option>
+                <option>Auxiliar Produção</option>
+                <option>Operador</option>
+            </select>
+
+            <select>
+                <option>Selecione o turno</option>
+                <option>Manhã</option>
+                <option>Tarde</option>
+                <option>Noite</option>
+            </select>
+
+            <select>
+                <option>Selecione sua escolaridade</option>
+                <option>Ensino médio completo</option>
+                <option>Ensino médio incompleto</option>
+            </select>
+        </div>
+
+        <!-- ALERTA -->
+        <div class="alert">
+            <strong>Atenção:</strong> As informações fornecidas serão analisadas pelo RH.
+        </div>
+
+        <!-- BOTÃO -->
+  <form method="POST" action="/salvar">
+    <button type="submit">
+        <i class="fas fa-paper-plane"></i> Enviar Ficha
+    </button>
+</form>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 Sistema RH – Todos os direitos reservados.
+</div>
+
+<script>
+
+const formulario = document.querySelector("form");
+
+formulario.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let cpf = document
+        .getElementById("cpf")
+        .value
+        .replace(/\D/g,'');
+
+    // LISTA DE TESTE
+    const cpfsExistentes = [
+        "12345678900"
+    ];
+
+    // verifica corretamente
+    const cpfExiste = cpfsExistentes.some(item => item === cpf);
+
+    if(cpfExiste){
+        alert("CPF já cadastrado!");
+        return;
+    }
+
+    // se não existir envia
+    formulario.submit();
+
+});
+
+</script>
+</body>
+</html>

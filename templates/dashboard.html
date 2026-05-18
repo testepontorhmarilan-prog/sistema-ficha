@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard RH</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f4f6f9;
+        }
+
+        /* TOPO */
+        .topbar {
+            background: #0a6ed1;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* LAYOUT */
+        .container {
+            display: flex;
+        }
+
+        /* MENU LATERAL */
+        .sidebar {
+            width: 220px;
+            background: #ffffff;
+            height: 100vh;
+            border-right: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background: #eaeaea;
+        }
+
+        /* CONTEÚDO */
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* CARDS */
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            flex: 1;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* TABELA */
+        table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background: #0a6ed1;
+            color: white;
+        }
+
+        button {
+            padding: 8px;
+            background: #0a6ed1;
+            color: white;
+            border: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="topbar">
+    <div>💼 Sistema RH</div>
+    <div>Usuário RH</div>
+</div>
+
+<div class="container">
+
+    <div class="sidebar">
+        <a href="#">Dashboard</a>
+        <a href="#">Candidatos</a>
+        <a href="/exportar">Exportar Excel</a>
+        <a href="/logout">Sair</a>
+    </div>
+
+    <div class="content">
+
+        <h2>Dashboard</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Total de Candidatos</h3>
+                <p>{{total}}</p>
+            </div>
+
+            <div class="card">
+                <h3>Turno Manhã</h3>
+                <p>--</p>
+            </div>
+
+            <div class="card">
+                <h3>Turno Noite</h3>
+                <p>--</p>
+            </div>
+        </div>
+
+        <br>
+
+        <form method="POST" action="/buscar">
+            <input name="termo" placeholder="Buscar CPF ou Nome">
+            <button>Buscar</button>
+        </form>
+
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Cargo</th>
+                <th>Score</th>
+                <th>PDF</th>
+            </tr>
+
+            {% for c in dados %}
+            <tr>
+                <td>{{c.nome}}</td>
+                <td>{{c.cpf}}</td>
+                <td>{{c.cargo}}</td>
+                <td>{{c.score}}</td>
+                <td><a href="/pdf/{{c.cpf}}">PDF</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
