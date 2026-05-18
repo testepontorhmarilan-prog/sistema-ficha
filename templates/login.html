@@ -1,6 +1,127 @@
-<h2>Login RH</h2>
+```html id="h4x5l7"
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Login RH</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI';
+}
+
+body{
+    background:#0f172a;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card{
+    width:380px;
+    background:white;
+    padding:40px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.logo i{
+    font-size:50px;
+    color:#2563eb;
+}
+
+.logo h2{
+    margin-top:10px;
+    color:#0f172a;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    border:none;
+    background:#f1f5f9;
+    border-radius:10px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.info{
+    margin-top:15px;
+    text-align:center;
+    color:#64748b;
+    font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="logo">
+<i class="fas fa-user-shield"></i>
+<h2>Painel RH</h2>
+</div>
+
 <form method="POST">
-<input name="usuario" placeholder="Usuário">
-<input type="password" name="senha" placeholder="Senha">
-<button>Entrar</button>
+
+<input
+type="text"
+name="usuario"
+placeholder="Usuário"
+required
+>
+
+<input
+type="password"
+name="senha"
+placeholder="Senha"
+required
+>
+
+<button type="submit">
+Entrar
+</button>
+
 </form>
+
+<div class="info">
+Sistema interno de recrutamento
+</div>
+
+</div>
+
+</body>
+</html>
+```
